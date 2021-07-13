@@ -13,5 +13,7 @@
   ],
   "author": "Rhie",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "underscore": "^1.13.1"
+  }
 }
