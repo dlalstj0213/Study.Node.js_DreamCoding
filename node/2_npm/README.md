@@ -1,3 +1,29 @@
+- [npm](#npm)
+    - [Node Package Manager](#node-package-manager)
+  - [npx](#npx)
+  - [yarn](#yarn)
+  - [Search npm packages](#search-npm-packages)
+  - [npm command](#npm-command)
+    - [프로젝트 패키지 설정 파일 만들기 (순차 진행)](#프로젝트-패키지-설정-파일-만들기-순차-진행)
+    - [프로젝트 패키지 설정 파일 만들기 (Default)](#프로젝트-패키지-설정-파일-만들기-default)
+    - [패키지 설치](#패키지-설치)
+    - [설치 명령어 옵션 설명](#설치-명령어-옵션-설명)
+    - [글로벌 패키지 설치](#글로벌-패키지-설치)
+    - [패키지 정보 조회 옵션 설명](#패키지-정보-조회-옵션-설명)
+    - [패키지 정보 조회](#패키지-정보-조회)
+    - [글로벌 패키지 정보 조회](#글로벌-패키지-정보-조회)
+    - [설치한 글로벌 패키지 정보 조회](#설치한-글로벌-패키지-정보-조회)
+    - [Node.js 업데이트](#nodejs-업데이트)
+    - [npm 업데이트](#npm-업데이트)
+  - [Package.json](#packagejson)
+    - [npm init](#npm-init)
+    - [script](#script)
+  - [Licencse](#licencse)
+  - [Library Manage](#library-manage)
+    - [Incrementing semantic versions in published packages](#incrementing-semantic-versions-in-published-packages)
+    - [Using semantic versioning to specify update types your package can accept](#using-semantic-versioning-to-specify-update-types-your-package-can-accept)
+    - [npm semver calculator](#npm-semver-calculator)
+
 # npm
 
 ### Node Package Manager
@@ -22,6 +48,10 @@ npm의 성능적인 부분을 개선해서 탄생함. (npm과 서로 호환 가�
 
 - [npm Docs: commands](https://docs.npmjs.com/cli/v7/commands)
 
+---
+
+### 프로젝트 패키지 설정 파일 만들기 (순차 진행)
+
 ```shell
 $ npm init
 ```
@@ -29,24 +59,136 @@ $ npm init
   - package.json 은 프로젝트에서 사용하고 있는 여러 라이브러리 정보, 프로젝트 버전 정보를 담고 있다.
 - 아무 옵션 없이 그저 `init`만 한다면 차례대로 초기 패키지 정보를 입력 할 수 있다.
 
+### 프로젝트 패키지 설정 파일 만들기 (Default)
+
 ```shell
 $ npm init --yes
 ```
 - `init`명령어에 `--yes` 옵션을 추가해주면 기본적인 정보를 가지고 `package.json`이 만들어 진다.
 
+---
+
+### 패키지 설치
 
 ```shell
 $ npm install
-$ npm install [library name]
+$ npm install [library-name]
 ```
 - 라이브러리를 프로젝트에 생성하기, 가져오기 (`node_modules` 폴더 하위에 생성됨)
 
-### 즉,
-`package.json`과 `npm install` 기능으로 인해서 프로젝트를 깃에 올릴때 `node_modules` 폴더는 올리지 않는다. (그리고 node_modules는 용량이 많이 크다)
+> 즉, 
+> `package.json`과 `npm install` 기능으로 인해서 프로젝트를 깃에 올릴때
+> `node_modules` 폴더는 올리지 않는다. (그리고 node_modules는 용량이 많이 크다)
+
+### 설치 명령어 옵션 설명
+
+```shell
+$ npm install -h
+$ npm i -h
+$ npm add -h
+```
+
+- `npm install` 옵션 설명 보기
+- `install`, `i`, `add` 중 아무거나 사용 가능 (기본적인 alias 설정 되어있음)
+
+### 글로벌 패키지 설치
+
+```shell
+$ npm i -g [library-name]
+```
+
+- npm에서 글로벌로 패키지 설치하기
+
+---
+
+### 패키지 정보 조회 옵션 설명
+
+```shell
+$ npm list -h
+$ npm la -h
+$ npm ll -h
+```
+
+- `npm list` 옵션 설명 보기
+- `list`, `la`, `ll` 중 아무거나 사용 가능 (기본적인 alias 설정 되어있음)
+
+### 패키지 정보 조회
+
+```shell
+$ npm list
+```
+
+- 현재 프로젝트에 설치된 패키지 정보 조회
+
+### 글로벌 패키지 정보 조회
+
+```shell
+$ npm ll -g
+```
+
+- 글로벌로 설치된 패키지 정보 조회
+
+### 설치한 글로벌 패키지 정보 조회
+
+```shell
+$ npm ll g --dept=0
+```
+
+- 본인이 설치한 전역(글로벌) npm 패키지 정보를 조회
+
+---
+
+### Node.js 업데이트
+
+```shell
+$ node -v
+```
+
+1. Node.js 현재 버전 확인
+
+```shell
+$ npm cache clean -f
+```
+
+2. npm 캐쉬 삭제 (오류발생 할 수 있음)
+
+```shell
+$ npm install -g n
+```
+
+3. n 플러그인 설치 : 노드 버전관리 플러그인 
+
+```shell
+$ n lts
+```
+
+4. Node.js 버전 설치 [(상세 사용법)](https://github.com/tj/n)
+   1. `n latest` : 최신버전
+   2. `n lts` : lts 버전
+   3. `n stable` : 안정버전
+
+---
+
+### npm 업데이트
+
+```shell
+$ npm -v
+```
+
+1. npm 현재 버전 확인
+
+```shell
+$ npm i -g npm
+```
+
+2. npm 업데이트 
+   1. `-g` 옵션 없을 시 현재 프로젝트만 적용됨
+
+---
 
 ## Package.json
 
-### `$ npm init`
+### npm init
 
 `npm init`명령어로 `package.json` 작성시,
 
@@ -61,7 +203,7 @@ $ npm install [library name]
 9. `license: (ISC)` : 라이센스 작성 (default:ISC)
 
 
-### `script : `
+### script
 
 ```json
   "scripts": {
@@ -79,3 +221,41 @@ $ npm install [library name]
   - 이와 같은 명령어는 `$ npm run [스크립트key]`의 명령어로 실행이 가능하다.
   - 예시) `$ npm run rhie`
 - npm 에서 사용가능한 기본 명령어 리스트는 `$ npm` 명령어를 통해서 확인해 볼 수 있다.
+
+## Licencse
+
+- [SPDX (https://spdx.org/licenses)](https://spdx.org/licenses)
+- [오픈소스 SW 라이선스 종합정보시스템](https://www.olis.or.kr/)
+
+## Library Manage
+
+- [https://docs.npmjs.com/about-semantic-versioning](https://docs.npmjs.com/about-semantic-versioning)
+
+### Incrementing semantic versions in published packages
+
+- version description ex)1.0.0
+
+|version index|description|
+|---|---|
+|1|**Major**: 전체적인 제품의 기능이 바뀌거나 변경사항이 발생후 재배포시 카운트|
+|.0|**Minor**: 작은 기능들을 추가후 재배포시 카운트|
+|.0|**Patch**: 출시한 버전의 버그나 오류 수정 후 재배포시 카운트|
+
+### Using semantic versioning to specify update types your package can accept
+
+- Patch releases: 1.0 or 1.0.x or ~1.0.4
+- Minor releases: 1 or 1.x or ^1.0.4
+- Major releases: * or x
+
+- Example)
+
+```json
+"dependencies": {
+  "my_dep": "^1.0.0",
+  "another_dep": "~2.2.0"
+},
+```
+
+### npm semver calculator
+
+- [https://semver.npmjs.com](https://semver.npmjs.com)
