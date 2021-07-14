@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app",
+    "start": "nodemon app",
     "rhie": "node app"
   },
   "keywords": [
@@ -15,5 +15,8 @@
   "license": "ISC",
   "dependencies": {
     "underscore": "^1.13.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
   }
 }
