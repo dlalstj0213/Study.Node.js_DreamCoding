@@ -1,34 +1,28 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 
-class Crawling {
+class CrawlingAxios {
 	constructor(TARGET_URL) {
 		this.TARGET_URL = TARGET_URL;
-		this._getHtml = async () => {
-			try {
+	}
+
+	async crawl(method, req) {
+		try {
+			if (method === 'get') {
 				return await axios.get(this.TARGET_URL);
-			} catch (error) {
-				console.log(error);
+			} else if (method === 'post') {
+				return await axios.post(this.TARGET_URL, req);
 			}
-		};
-		this._postHtml = async () => {
-			try {
-				return await axios.post(this.TARGET_URL, {
-					cid: 50000000,
-					//timeUnit: 'date',
-					startDate: '2021-06-17',
-					endDate: '2021-07-17',
-					page: 1,
-					count: 20,
-				});
-			} catch (error) {
-				console.log(error);
-			}
-		};
+		} catch (error) {
+			console.log(error);
+		}
+		return new Promise((resolve, reject) => {
+			return reject('No matching method found.');
+		});
 	}
 
 	async getHtml() {
-		return await this._getHtml().then((html) => {
+		return await this.crawl('get').then((html) => {
 			let ulList = [];
 
 			const $ = cheerio.load(html.data);
@@ -51,4 +45,4 @@ class Crawling {
 	}
 }
 
-module.exports.Crawling = Crawling;
+module.exports.CrawlingAxios = CrawlingAxios;

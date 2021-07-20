@@ -1,12 +1,14 @@
 console.log('node start!');
 
-const crawling = require('./crawling.js');
-const naver = new crawling.Crawling(
+/*
+const crawling = require('./js/crawling.js');
+const naver = new crawling.CrawlingAxios(
 	'https://datalab.naver.com/shoppingInsight/sCategory.naver'
 );
 
 const result = naver.getHtml();
 result.then(console.log);
+*/
 
 // https://datalab.naver.com/shoppingInsight/getCategoryKeywordRank.naver
 /*
@@ -20,3 +22,11 @@ device:
 page: 1
 count: 20
  */
+
+const crawler = require('./js/crawler.js');
+
+const naverCrawler = new crawler.Crawler(
+	'https://datalab.naver.com/shoppingInsight/sCategory.naver'
+);
+
+naverCrawler.crawl().catch(console.error);
