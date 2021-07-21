@@ -5,15 +5,19 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "1" : "nodemon 1_basic-use/app",
-    "2" : "nodemon 2_post/app",
-    "3" : "nodemon 3_error/app"
+    "1": "nodemon 1_basic-use/app",
+    "2": "nodemon 2_post/app",
+    "3": "nodemon 3_error/app",
+    "5": "nodemon 5_router/app",
+    "6": "nodemon 6_useful_middleware/app",
+    "7": "nodemon 7_cors/app",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1"
   },
   "devDependencies": {
