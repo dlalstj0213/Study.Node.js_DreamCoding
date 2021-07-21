@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
+const util = require('util');
 const fs = require('fs');
-const { Agent } = require('http');
 
 /**
  * 서버에서 puppeteer를 사용할 경우,
@@ -42,29 +42,41 @@ class Crawler {
 		 * notworkidle2 : 최소한 500ms 동안 두 개 이상의 네트워 연결이 없을 때 탐색이 완료되는 것으로 간주한다.
 		 */
 		await page.goto(this.TARGET_URL, { waitUntil: 'networkidle2' });
-		await page.waitForTimeout(3000);
+		//await page.waitForTimeout(3000);
+		await page.waitForSelector('ul.rank_top1000_list li');
 
 		// 페이지 파싱
 		//const html = await page.content();
 		// 로그 찍기
 		//setLog(html);
 
-		let rankli = await page.$$('ul.rank_top1000_list li', function (element) {
-			return element.children;
-		});
 		let rankList = [];
-		for (let el of rankli) {
-			let obj = {};
-			obj.rank = await el.$eval('span.rank_top1000_num', (element) => {
-				return element.innerText;
+		for (let i = 0; i < 25; i++) {
+			if (i !== 0) {
+				await page.click('a.btn_page_next');
+				await page.waitForSelector('ul.rank_top1000_list li');
+			}
+			let rankli = await page.$$('ul.rank_top1000_list li', function (element) {
+				return element.children;
 			});
-			obj.keyword = await el.$eval('span.rank_top1000_num', (element) => {
-				return element.nextSibling.data.trim();
-			});
-			rankList.push(obj);
+
+			let items = {};
+			items.page = i + 1;
+			items.items = [];
+			for (let el of rankli) {
+				let obj = {};
+				obj.rank = await el.$eval('span.rank_top1000_num', (element) => {
+					return element.innerText;
+				});
+				obj.keyword = await el.$eval('span.rank_top1000_num', (element) => {
+					return element.nextSibling.data.trim();
+				});
+				items.items.push(obj);
+			}
+			rankList.push(items);
 		}
 
-		console.log(rankList);
+		console.log(util.inspect(rankList, { depth: 5 }));
 
 		await page.close();
 		await browser.close();

@@ -1,0 +1,8 @@
+{
+  "NAVER_DATALAB_SHOPPING_INSIGHT_CATEGORY" : "https://datalab.naver.com/shoppingInsight/sCategory.naver",
+  "NAVER_DATALAB_SHOPPING_INSIGHT_KEYWORD" : "https://datalab.naver.com/shoppingInsight/sKeyword.naver",
+  "NAVER_DATALAB_HOME" : "https://datalab.naver.com/",
+  "NAVER_DATALAB_KEYWORD_SEARCH" : "https://datalab.naver.com/keyword/trendSearch.naver",
+  "NAVER_DATALAB_LOCAL_TREND" : "https://datalab.naver.com/local/trend.naver",
+  "NAVER_DATALAB_COMMENT_STAT" : "https://datalab.naver.com/commentStat/news.naver"
+}
