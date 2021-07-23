@@ -10,6 +10,7 @@
 		<h1>TEST Excel</h1>
 		<h2>Response : <span id="result">No Result</span></h2>
 		<script>
+			var dataList = [];
 			fetch('http://localhost:8080/excel', {
 				method: 'GET',
 				headers: {
@@ -20,7 +21,8 @@
 					return res.json();
 				})
 				.then((data) => {
-					document.getElementById('result').innerText = data.msg;
+					dataList = data;
+					document.getElementById('result').innerText = data.length;
 				})
 				.catch(console.error);
 		</script>
