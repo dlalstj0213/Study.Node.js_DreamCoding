@@ -43,10 +43,12 @@ class Crawler {
 		);
 
 		// Validation : 파라미터 유효성 검사
-		validateParams(opt, search, (a, b) => {
-			opt = a;
-			search = b;
-		});
+		const validated = await validateParams(opt, search);
+
+		opt = validated.opt;
+		search = validated.search;
+		console.log(opt);
+		console.log(search);
 
 		let rankList = [];
 		const browser = await puppeteer.launch({
@@ -81,6 +83,7 @@ class Crawler {
 					await page.click(selectors.rank_btn_next);
 					await page.waitForSelector(selectors.rank_list_root);
 				}
+				await page.waitForTimeout(1000);
 				let rankli = await page.$$(
 					selectors.rank_list_root,
 					function (element) {
@@ -117,7 +120,7 @@ class Crawler {
 	}
 }
 
-function validateParams(opt, search, callback) {
+async function validateParams(opt, search) {
 	opt = opt ? opt : {};
 	opt instanceof Array
 		? new Error(
@@ -150,7 +153,7 @@ function validateParams(opt, search, callback) {
 	/**
 	 * 검색 조건별 분야, 기간 값 세팅해야함
 	 */
-	return callback(opt, search);
+	return { opt: opt, search: search };
 }
 
 async function clickSearchParams(page, search) {
