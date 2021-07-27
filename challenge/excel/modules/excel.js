@@ -12,19 +12,29 @@ async function write(data) {
 	const worksheet = workbook.addWorksheet(`TOP500-${title}`);
 
 	worksheet.columns = workSheetColums;
-	console.log('WHY??');
-	// data.forEach((el) => {
-	// 	el.items.forEach((item) => {
-	// 		worksheet.addRow({ rank: item.rank, keyword: item.keyword });
-	// 	});
-	// });
 
-	//workbook.xlsx.write('test.xlsx').then(console.log).catch(console.error);
+	data.forEach((el) => {
+		el.items.forEach((item) => {
+			worksheet.addRow({ rank: item.rank, keyword: item.keyword });
+		});
+	});
+	/*
+	const t = new Excel.stream.xlsx.WorkbookWriter({
+		filename: './streamed-workbook.xlsx',
+	});
+	*/
+	workbook.xlsx
+		.writeFile('./streamed-workbook.xlsx')
+		.then(console.log)
+		.catch(console.error);
 
 	return data;
 }
 
-async function read() {}
+async function read() {
+	console.log('read activ>>>>>>>>>>>');
+	return '';
+}
 
 async function download() {}
 

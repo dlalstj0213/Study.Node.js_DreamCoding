@@ -83,7 +83,7 @@ class Crawler {
 					await page.click(selectors.rank_btn_next);
 					await page.waitForSelector(selectors.rank_list_root);
 				}
-				await page.waitForTimeout(1000);
+				await page.waitForTimeout(500);
 				let rankli = await page.$$(
 					selectors.rank_list_root,
 					function (element) {
@@ -128,7 +128,11 @@ async function validateParams(opt, search) {
 		  )
 		: opt;
 	opt = {
-		handless: opt.handless ? opt.handless : true,
+		handless: !!opt.handless
+			? opt.handless
+			: opt.handless === false
+			? false
+			: true, //////에러에러
 		each: [20, 50, 100].includes(opt.each) ? opt.each : 20,
 		page: opt.page ? opt.page : true,
 	};
