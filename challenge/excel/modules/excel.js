@@ -23,10 +23,7 @@ async function write(data) {
 		filename: './streamed-workbook.xlsx',
 	});
 	*/
-	workbook.xlsx
-		.writeFile('./streamed-workbook.xlsx')
-		.then(console.log)
-		.catch(console.error);
+	//await workbook.xlsx.writeFile('./streamed-workbook.xlsx');
 
 	return data;
 }
