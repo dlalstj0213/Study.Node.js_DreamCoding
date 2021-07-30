@@ -12,6 +12,7 @@
     "6": "nodemon 6_useful_middleware/app",
     "7": "nodemon 7_cors/app",
     "8": "nodemon 8_useful_external_middleware/app",
+    "9": "nodemon 9_validation/app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -21,6 +22,7 @@
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-validator": "^6.12.1",
     "helmet": "^4.6.0",
     "morgan": "^1.10.0"
   },

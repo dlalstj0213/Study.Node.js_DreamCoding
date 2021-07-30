@@ -34,3 +34,13 @@ package.json
   "start" : "nodemon app"
 },
 ```
+
+## 6. 유용한 라이브러리
+
+```bash
+$ npm i cookie-parse
+$ npm i morgan
+$ npm i cors
+$ npm i helmet
+$ npm i express-validator
+```
