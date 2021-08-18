@@ -1,0 +1,16 @@
+{
+  "name": "7_auth",
+  "version": "1.0.0",
+  "description": "- [인증 Authentication](#인증-authentication)\r   - [Session & Cookies](#session--cookies)\r     - [인증 과정](#인증-과정)\r     - [단점](#단점)\r   - [JWT](#jwt)\r   - [구조](#구조)\r     - [인증 과정](#인증-과정-1)\r     - [장점](#장점)\r     - [단점](#단점-1)\r - [bcrypt](#bcrypt)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "jsonwebtoken": "^8.5.1"
+  }
+}
