@@ -34,37 +34,37 @@ class BigKindsClient {
 
 		switch (this.requestType) {
 			case REQUEST_TYPE.SEARCH_NEWS:
-				this.requestURL = config.bigkinds.searchNews;
+				this.endPoint = config.bigkinds.searchNews;
 				break;
 			case REQUEST_TYPE.SEARCH_NEWS_DETAIL:
-				this.requestURL = config.bigkinds.searchNews;
+				this.endPoint = config.bigkinds.searchNews;
 				break;
 			case REQUEST_TYPE.ISSUE_RANKING:
-				this.requestURL = config.bigkinds.issueRanking;
+				this.endPoint = config.bigkinds.issueRanking;
 				break;
 			case REQUEST_TYPE.WORD_CLOUD:
-				this.requestURL = config.bigkinds.wordCloud;
+				this.endPoint = config.bigkinds.wordCloud;
 				break;
 			case REQUEST_TYPE.TIME_LINE:
-				this.requestURL = config.bigkinds.timeLine;
+				this.endPoint = config.bigkinds.timeLine;
 				break;
 			case REQUEST_TYPE.QUERY_RANK:
-				this.requestURL = config.bigkinds.queryRank;
+				this.endPoint = config.bigkinds.queryRank;
 				break;
 			case REQUEST_TYPE.SEARCH_QUOTATION:
-				this.requestURL = config.bigkinds.searchQuotation;
+				this.endPoint = config.bigkinds.searchQuotation;
 				break;
 			case REQUEST_TYPE.TODAY_CATEGORY_KEYWORD:
-				this.requestURL = config.bigkinds.todayCategoryKeyword;
+				this.endPoint = config.bigkinds.todayCategoryKeyword;
 				break;
 			case REQUEST_TYPE.FEATURE:
-				this.requestURL = config.bigkinds.feature;
+				this.endPoint = config.bigkinds.feature;
 				break;
 			case REQUEST_TYPE.KEYWORD:
-				this.requestURL = config.bigkinds.keyword;
+				this.endPoint = config.bigkinds.keyword;
 				break;
 			case REQUEST_TYPE.TOPN_KEYWORD:
-				this.requestURL = config.bigkinds.topnKeyword;
+				this.endPoint = config.bigkinds.topnKeyword;
 				break;
 			default:
 				throw new Error(
@@ -85,7 +85,7 @@ class BigKindsClient {
 		};
 		let response;
 		try {
-			response = await axios.post(`${this.baseURL}${this.requestURL}`, {
+			response = await axios.post(`${this.baseURL}${this.endPoint}`, {
 				...body,
 			});
 		} catch (error) {

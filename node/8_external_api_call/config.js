@@ -12,6 +12,7 @@ function required(key, defaultValue = undefined) {
 const config = {
 	bigkinds: {
 		baseURL: required('BIGKINDS_BASE_URL'),
+		imageURL: required('BIGKINDS_IMAGE_URL'),
 		accessKey: required('BIGKINDS_ACCESS_KEY'),
 		searchNews: required('BIGKINDS_SEARCH_NEWS'),
 		issueRanking: required('BIGKINDS_ISSUE_RANKING'),
