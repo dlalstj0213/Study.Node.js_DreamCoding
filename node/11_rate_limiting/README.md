@@ -13,6 +13,7 @@
     - [Leaky bucket](#leaky-bucket)
     - [Token bucket](#token-bucket)
 - [Client side considerations](#client-side-considerations)
+- [NodeJS useful middleware](#nodejs-useful-middleware)
 
 # Rate Limiter?
 
@@ -99,3 +100,7 @@ ex)
 429 (Retry-After: 1000(1초)) request -> 900/1100 -> Retry -> (O) 
 
 이렇게 하는 이유는 예를 들어 세 클라이언트가 각각 같은 Retry-After 값으로 재시도를 하게되는 경우 결국에는 그 다음 시간대에 동시에 보내게 되므로 같은 결과를 초래할 수 있다. 그래서 각자 조금씩 시간을 앞뒤로 비틀어서 재시도를 하는게 좋다.
+
+# NodeJS useful middleware
+
+https://github.com/nfriedly/express-rate-limit
